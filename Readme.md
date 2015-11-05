@@ -6,5 +6,5 @@ Adds a scheduler task that checks for broken links.
 * User controls which fields to check
 * User controls which response codes should be logged
 
-#How do this work
+#How does this work
 The plugin provides backend settings for admins to use.
