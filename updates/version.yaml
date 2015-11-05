@@ -1,0 +1,4 @@
+1.0.1: First version of LinkCheck
+1.0.2:
+- Run database operations
+- create_broken_links_table.php

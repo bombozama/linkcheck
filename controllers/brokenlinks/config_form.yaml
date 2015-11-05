@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Broken Link
+
+# Model Form Field configuration
+form: $/bombozama/linkcheck/models/brokenlink/fields.yaml
+
+# Model Class name
+modelClass: Bombozama\LinkCheck\Models\BrokenLink
+
+# Default redirect location
+defaultRedirect: bombozama/linkcheck/brokenlinks
+
+# Create page
+create:
+    title: Create Broken Link
+    redirect: bombozama/linkcheck/brokenlinks/update/:id
+    redirectClose: bombozama/linkcheck/brokenlinks
+
+# Update page
+update:
+    title: Edit Broken Link
+    redirect: bombozama/linkcheck/brokenlinks
+    redirectClose: bombozama/linkcheck/brokenlinks
+
+# Preview page
+preview:
+    title: Preview Broken Link
