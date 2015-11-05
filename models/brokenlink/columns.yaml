@@ -3,6 +3,21 @@
 # ===================================
 
 columns:
-    id:
-        label: ID
+    model:
+        label: Model or filepath
         searchable: true
+    model_id:
+        label: Model id
+        searchable: true
+    field:
+        label: Field
+        searchable: true
+    status:
+        label: Response code
+        searchable: true
+    url:
+        label: URL
+        searchable: true
+    created_at:
+        label: Last check
+        searchable: false

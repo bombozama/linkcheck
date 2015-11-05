@@ -9,30 +9,30 @@ list: $/bombozama/linkcheck/models/brokenlink/columns.yaml
 modelClass: Bombozama\LinkCheck\Models\BrokenLink
 
 # List Title
-title: Manage Broken Links
+title: Broken Link List
 
 # Link URL for each record
-recordUrl: bombozama/linkcheck/brokenlinks/update/:id
+recordUrl: null
 
 # Message to display if the list is empty
-noRecordsMessage: backend::lang.list.no_records
+noRecordsMessage: No broken list have been detected at this time.
 
 # Records to display per page
 recordsPerPage: 20
 
 # Displays the list column set up button
-showSetup: true
+showSetup: false
 
 # Displays the sorting link on each column
 showSorting: true
 
 # Default sorting column
-# defaultSort:
-#     column: created_at
-#     direction: desc
+defaultSort:
+    column: status
+    direction: desc
 
 # Display checkboxes next to each record
-# showCheckboxes: true
+showCheckboxes: false
 
 # Toolbar widget configuration
 toolbar:

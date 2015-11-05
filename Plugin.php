@@ -6,6 +6,7 @@ use Bombozama\LinkCheck\Models\BrokenLink;
 use Bombozama\LinkCheck\Classes\Helper;
 use Cms\Classes\Theme;
 use File;
+use Backend;
 
 /**
  * LinkCheck Plugin Information File
@@ -43,13 +44,23 @@ class Plugin extends PluginBase
             'settings' => [
                 'label'       => 'Link Check Settings',
                 'description' => 'Checks database daily for broken links.',
-                'category'    => 'Misc',
+                'category'    => 'Link Check',
                 'icon'        => 'icon-chain-broken',
                 'class'       => 'Bombozama\LinkCheck\Models\Settings',
                 'order'       => 500,
                 'keywords'    => 'link url broken',
                 'permissions' => ['bombozama.linkcheck.settings']
-            ]
+            ],
+            'brokenlinks' => [
+                'label'       => 'Link report',
+                'description' => 'Shows list of broken links',
+                'category'    => 'Link Check',
+                'icon'        => 'icon-list',
+                'url'         => Backend::url('bombozama/linkcheck/brokenlinks'),
+                'order'       => 501,
+                'keywords'    => 'link url broken',
+                'permissions' => ['bombozama.linkcheck.settings']
+            ],
         ];
     }
 

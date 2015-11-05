@@ -2,24 +2,27 @@
 
 use BackendMenu;
 use Backend\Classes\Controller;
+use System\Classes\SettingsManager;
 
 /**
  * Broken Links Back-end Controller
  */
 class BrokenLinks extends Controller
 {
+    public $requiredPermissions = ['bombozama.linkcheck.view_brokenlinks'];
+
     public $implement = [
-        'Backend.Behaviors.FormController',
         'Backend.Behaviors.ListController'
     ];
 
-    public $formConfig = 'config_form.yaml';
     public $listConfig = 'config_list.yaml';
 
     public function __construct()
     {
         parent::__construct();
-
-        BackendMenu::setContext('Bombozama.LinkCheck', 'linkcheck', 'brokenlinks');
+        BackendMenu::setContext('October.System', 'system', 'settings');
+        SettingsManager::setContext('Bombozama.LinkCheck', 'brokenlinks');
     }
+
+    
 }
