@@ -12,6 +12,7 @@ A link status report can be found in the backend Settings tab.
 
 #Future
 * Check for relative/dynamic links
+* Translate plugin
 
 #Like this plugin?
 If you like this plugin, give this plugin a Like or please consider making a donation.
