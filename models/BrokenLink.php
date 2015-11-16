@@ -53,17 +53,20 @@ class BrokenLink extends Model
             list($modelName, $field) = explode('::', $el['modelator']);
             $models = $modelName::whereNotNull($field)->get();
             foreach($models as $model){
-                $status = BrokenLink::isBrokenLink($model->$field);
+                $urls = Helper::scanForUrls($model->$field);
                 $modelParts = explode('\\', $modelName);
-                if($status)
-                    $brokenLinks[] = [
-                        'status'    => $status,
-                        'plugin'    => $modelParts[1] . '.' . $modelParts[2],
-                        'model'     => array_pop($modelParts),
-                        'model_id'  => $model->id,
-                        'field'     => $field,
-                        'url'       => $model->$field
-                    ];
+                foreach($urls as $url){
+                    $status = BrokenLink::isBrokenLink($url);
+                    if($status)
+                        $brokenLinks[] = [
+                            'status'    => $status,
+                            'plugin'    => $modelParts[1] . '.' . $modelParts[2],
+                            'model'     => array_pop($modelParts),
+                            'model_id'  => $model->id,
+                            'field'     => $field,
+                            'url'       => $model->$field
+                        ];
+                }
             }
         }
 
