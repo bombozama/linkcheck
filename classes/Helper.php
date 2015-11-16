@@ -4,7 +4,7 @@ class Helper
 {
     public static function scanForUrls($string)
     {
-        $expression = '/https?\:\/\/[^\" ]+/i';
+        $expression = '#\bhttps?://[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))#';
         preg_match_all($expression, $string, $matches);
         return ($matches[0]);
     }
