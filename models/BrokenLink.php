@@ -10,7 +10,7 @@ class BrokenLink extends Model
 {
     public $table = 'bombozama_linkcheck_broken_links';
 
-    protected $fillable = ['model', 'model_id', 'field', 'url', 'status'];
+    protected $fillable = ['model', 'plugin', 'model_id', 'field', 'url', 'status'];
 
     /**
      * Checks to see if links return selected response codes (in settings)
@@ -58,7 +58,7 @@ class BrokenLink extends Model
                 if($status)
                     $brokenLinks[] = [
                         'status'    => $status,
-                        'plugin'    => $modelParts,
+                        'plugin'    => $modelParts[1] . '.' . $modelParts[2],
                         'model'     => array_pop($modelParts),
                         'model_id'  => $model->id,
                         'field'     => $field,
