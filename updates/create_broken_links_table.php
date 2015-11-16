@@ -12,6 +12,7 @@ class CreateBrokenLinksTable extends Migration
         {
             $table->engine = 'InnoDB';
             $table->increments('id');
+            $table->string('plugin');
             $table->string('model');
             $table->integer('model_id')->nullable();
             $table->string('field')->nullable();

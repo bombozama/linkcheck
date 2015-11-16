@@ -1,11 +1,8 @@
 <?php namespace Bombozama\LinkCheck;
 
+use Bombozama\LinkCheck\Models\BrokenLink;
 use System\Classes\PluginBase;
 use Bombozama\LinkCheck\Models\Settings;
-use Bombozama\LinkCheck\Models\BrokenLink;
-use Bombozama\LinkCheck\Classes\Helper;
-use Cms\Classes\Theme;
-use File;
 use Backend;
 
 /**
@@ -47,7 +44,7 @@ class Plugin extends PluginBase
                 'category'    => 'Link Check',
                 'icon'        => 'icon-chain-broken',
                 'class'       => 'Bombozama\LinkCheck\Models\Settings',
-                'order'       => 500,
+                'order'       => 10,
                 'keywords'    => 'link url broken',
                 'permissions' => ['bombozama.linkcheck.settings']
             ],
@@ -57,7 +54,7 @@ class Plugin extends PluginBase
                 'category'    => 'Link Check',
                 'icon'        => 'icon-list',
                 'url'         => Backend::url('bombozama/linkcheck/brokenlinks'),
-                'order'       => 501,
+                'order'       => 11,
                 'keywords'    => 'link url broken',
                 'permissions' => ['bombozama.linkcheck.settings']
             ],
@@ -69,59 +66,7 @@ class Plugin extends PluginBase
     {
         $settings = Settings::instance();
         $schedule->call(function(){
-            $this->processLinks();
+            BrokenLink::processLinks();
         })->cron($settings->time);
-    }
-
-    protected function processLinks()
-    {
-        # Let's start by truncating the BrokenLinks table
-        BrokenLink::truncate();
-        $brokenLinks = [];
-        $settings = Settings::instance();
-        foreach($settings->modelators as $el) {
-            list($modelName, $field) = explode('::', $el['modelator']);
-            $models = $modelName::whereNotNull($field)->get();
-            foreach($models as $model){
-                $status = BrokenLink::isBrokenLink($model->$field);
-                if($status)
-                    $brokenLinks[] = [
-                        'status'    => $status,
-                        'model'     => $modelName,
-                        'model_id'  => $model->id,
-                        'field'     => $field,
-                        'url'       => $model->$field
-                    ];
-            }
-        }
-
-        # Go process the current theme
-        $theme =  Theme::getActiveTheme();
-        $theme->getPath();
-
-        # Should we process theme pages?
-        if($settings['checkCMS'] == '1')
-            foreach(File::directories($theme->getPath()) as $themeSubDir){
-                # Skip the assets folder
-                if(basename($themeSubDir) == 'assets')
-                    continue;
-
-                foreach(File::allFiles($themeSubDir) as $filePath){
-                    $urls = Helper::scanForUrls(file_get_contents($filePath));
-                    foreach($urls as $url){
-                        $status = BrokenLink::isBrokenLink($url);
-                        if($status)
-                            $brokenLinks[] = [
-                                'status'    => $status,
-                                'model'     => $filePath,
-                                'url'       => $url
-                            ];
-                    }
-                }
-            }
-
-        # Lets seed the BrokenLink table
-        foreach($brokenLinks as $brokenLink)
-            BrokenLink::create($brokenLink);
     }
 }

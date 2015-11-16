@@ -3,21 +3,29 @@
 # ===================================
 
 columns:
-    model:
-        label: Model or filepath
-        searchable: true
-    model_id:
-        label: Model id
-        searchable: true
-    field:
-        label: Field
-        searchable: true
     status:
-        label: Response code
+        label: Status
         searchable: true
+        width: 100px
     url:
         label: URL
         searchable: true
+    plugin:
+        label: Plugin
+        searchable: true
+    model:
+        label: Model/Filepath
+        searchable: true
+    model_id:
+        label: ID
+        searchable: true
+        select: IF(model_id IS NULL, '--', model_id)
+        width: 110px
+    field:
+        label: Field
+        searchable: true
+        width: 110px
     created_at:
         label: Last check
         searchable: false
+        width: 145px

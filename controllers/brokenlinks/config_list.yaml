@@ -15,7 +15,7 @@ title: Broken Link List
 recordUrl: null
 
 # Message to display if the list is empty
-noRecordsMessage: No broken list have been detected at this time.
+noRecordsMessage: No broken list have been detected at this time or the check is currently running.
 
 # Records to display per page
 recordsPerPage: 20

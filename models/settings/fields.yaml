@@ -4,14 +4,26 @@
 
 fields:
     time:
-        label: Crontab time mask
-        commentAbove: The plugin will check for broken links according to this definition. Check http://crontab.org/ for more info. Please check your timezone definition.
+        label: Time mask
+        comment: The plugin will check for broken links as scheduled here. Check http://crontab.org/ for more info.
         placeholder: '* * * * *'
+        span: left
+    codes:
+        label: Which HTTP response codes should be reported?
+        type: checkboxlist
+        span: right
+        options:
+            200: Successful responses (200 - 206) [not recomended]
+            300: Redirection responses (300 - 308)
+            400: Client error responses (400 - 431)
+            500: Server error responses (500 - 511)
     checkCMS:
-        label: Check for broken links in CMS files?
+        label: Check links within CMS files?
         type: checkbox
+        span: left
     modelators:
         type: repeater
+        prompt: Select a database field
         form:
             fields:
                 modelator:
@@ -19,11 +31,3 @@ fields:
                     commentAbove: Select the Plugin/Model/Fields that you wish to scan.
                     type: dropdown
                     emptyOption: Select at least one field to check for broken links [optional]
-    codes:
-        label: Which HTTP response codes should be reported?
-        type: checkboxlist
-        options:
-            200: Include successful responses (200 - 206) [not recomended]
-            300: Include redirection responses (300 - 308)
-            400: Include client error responses (400 - 431)
-            500: Include server error responses (500 - 511)
