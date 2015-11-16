@@ -44,7 +44,7 @@ class Plugin extends PluginBase
                 'category'    => 'Link Check',
                 'icon'        => 'icon-chain-broken',
                 'class'       => 'Bombozama\LinkCheck\Models\Settings',
-                'order'       => 10,
+                'order'       => 410,
                 'keywords'    => 'link url broken',
                 'permissions' => ['bombozama.linkcheck.settings']
             ],
@@ -54,7 +54,7 @@ class Plugin extends PluginBase
                 'category'    => 'Link Check',
                 'icon'        => 'icon-list',
                 'url'         => Backend::url('bombozama/linkcheck/brokenlinks'),
-                'order'       => 11,
+                'order'       => 411,
                 'keywords'    => 'link url broken',
                 'permissions' => ['bombozama.linkcheck.settings']
             ],
