@@ -4,30 +4,30 @@
 
 fields:
     time:
-        label: Time mask
-        comment: The plugin will check for broken links as scheduled here. Check http://crontab.org/ for more info.
+        label: bombozama.linkcheck::lang.strings.time
+        comment: bombozama.linkcheck::lang.strings.time_comment
         placeholder: '* * * * *'
         span: left
     codes:
-        label: Which HTTP response codes should be reported?
+        label: bombozama.linkcheck::lang.strings.codes
         type: checkboxlist
         span: right
         options:
-            200: Successful responses (200 - 206) [not recomended]
-            300: Redirection responses (300 - 308)
-            400: Client error responses (400 - 431)
-            500: Server error responses (500 - 511)
+            200: bombozama.linkcheck::lang.strings.codes_opt_200
+            300: bombozama.linkcheck::lang.strings.codes_opt_300
+            400: bombozama.linkcheck::lang.strings.codes_opt_400
+            500: bombozama.linkcheck::lang.strings.codes_opt_500
     checkCMS:
-        label: Check links within CMS files?
+        label: bombozama.linkcheck::lang.strings.check_cms
         type: checkbox
         span: left
     modelators:
         type: repeater
-        prompt: Select a database field
+        prompt: bombozama.linkcheck::lang.strings.modelators_prompt
         form:
             fields:
                 modelator:
-                    label: Plugin/Model
-                    commentAbove: Select the Plugin/Model/Fields that you wish to scan.
+                    label: bombozama.linkcheck::lang.strings.modelator
+                    commentAbove: bombozama.linkcheck::lang.strings.modelator_comment
                     type: dropdown
-                    emptyOption: Select at least one field to check for broken links [optional]
+                    emptyOption: bombozama.linkcheck::lang.strings.modelator_empty

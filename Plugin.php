@@ -18,19 +18,24 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
-            'name'        => 'Link Check',
-            'description' => 'Checks database daily for broken links...',
+            'name'        => 'bombozama.linkcheck::lang.details.name',
+            'description' => 'bombozama.linkcheck::lang.details.description',
             'author'      => 'Gonzalo Henríquez',
-            'icon'        => 'icon-chain-broken'
+            'icon'        => 'icon-chain-broken',
+            'homepage'    => 'https://github.com/bombozama/linkcheck'
         ];
     }
 
     public function registerPermissions()
     {
         return [
-            'bombozama.linkcheck.settings' => [
-                'tab'   => 'Misc',
-                'label' => 'Manage Link check configuration',
+            'bombozama.linkcheck.manage' => [
+                'tab'   => 'bombozama.linkcheck::lang.plugin.tab',
+                'label' => 'bombozama.linkcheck::lang.plugin.manage',
+            ],
+            'bombozama.linkcheck.view' => [
+                'tab'   => 'bombozama.linkcheck::lang.plugin.tab',
+                'label' => 'bombozama.linkcheck::lang.plugin.view',
             ],
         ];
     }
@@ -39,24 +44,22 @@ class Plugin extends PluginBase
     {
         return [
             'settings' => [
-                'label'       => 'Link Check Settings',
-                'description' => 'Checks database daily for broken links.',
-                'category'    => 'Link Check',
+                'label'       => 'bombozama.linkcheck::lang.menu.settings.label',
+                'description' => 'bombozama.linkcheck::lang.menu.settings.description',
+                'category'    => 'bombozama.linkcheck::lang.plugin.category',
                 'icon'        => 'icon-chain-broken',
                 'class'       => 'Bombozama\LinkCheck\Models\Settings',
                 'order'       => 410,
-                'keywords'    => 'link url broken',
-                'permissions' => ['bombozama.linkcheck.settings']
+                'permissions' => ['bombozama.linkcheck.manage']
             ],
             'brokenlinks' => [
-                'label'       => 'Link report',
-                'description' => 'Shows list of broken links',
-                'category'    => 'Link Check',
+                'label'       => 'bombozama.linkcheck::lang.menu.brokenlinks.label',
+                'description' => 'bombozama.linkcheck::lang.menu.brokenlinks.description',
+                'category'    => 'bombozama.linkcheck::lang.plugin.category',
                 'icon'        => 'icon-list',
                 'url'         => Backend::url('bombozama/linkcheck/brokenlinks'),
                 'order'       => 411,
-                'keywords'    => 'link url broken',
-                'permissions' => ['bombozama.linkcheck.settings']
+                'permissions' => ['bombozama.linkcheck.view']
             ],
         ];
     }

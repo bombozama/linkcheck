@@ -9,13 +9,13 @@ list: $/bombozama/linkcheck/models/brokenlink/columns.yaml
 modelClass: Bombozama\LinkCheck\Models\BrokenLink
 
 # List Title
-title: Broken Link List
+title: bombozama.linkcheck::lang.strings.list_title
 
 # Link URL for each record
 recordUrl: null
 
 # Message to display if the list is empty
-noRecordsMessage: No broken list have been detected at this time or the check is currently running.
+noRecordsMessage: bombozama.linkcheck::lang.strings.no_records
 
 # Records to display per page
 recordsPerPage: 20
