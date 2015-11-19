@@ -12,6 +12,7 @@ fields:
         label: bombozama.linkcheck::lang.strings.codes
         type: checkboxlist
         span: right
+        default: 400,500
         options:
             200: bombozama.linkcheck::lang.strings.codes_opt_200
             300: bombozama.linkcheck::lang.strings.codes_opt_300
@@ -20,6 +21,7 @@ fields:
     checkCMS:
         label: bombozama.linkcheck::lang.strings.check_cms
         type: checkbox
+        default: true
         span: left
     modelators:
         type: repeater
