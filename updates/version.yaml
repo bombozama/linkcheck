@@ -3,3 +3,4 @@
 - Run database operations
 - create_broken_links_table.php
 1.0.3: Implemented i18n
+1.0.4: Quick fix for unsupported Pivot models
