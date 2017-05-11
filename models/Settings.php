@@ -34,6 +34,9 @@ class Settings extends Model
                     $models[] = Helper::getFullClassNameFromFile((string)$modelFile);
                 }
         foreach($models as $model) {
+            if(substr($model, -5) == 'Pivot')
+                continue;
+
             $object = new $model();
             foreach(Schema::getColumnListing($object->table) as $column){
                 $type = DB::connection()->getDoctrineColumn($object->table, $column)->getType()->getName();
