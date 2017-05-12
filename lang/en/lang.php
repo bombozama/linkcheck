@@ -13,7 +13,7 @@ return [
     'strings'     => [
         'refresh_list'      => 'Refresh Link List',
         'list_title'        => 'Broken Link List',
-        'no_records'        => 'No broken list have been detected at this time or the check is currently running.',
+        'no_records'        => 'No broken links have been detected at this time or the system is currently checking for broken links.',
         'total_links'       => 'A total of :number broken links were found!',
         'status'            => 'Status',
         'url'               => 'URL',
