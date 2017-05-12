@@ -26,10 +26,11 @@ fields:
     modelators:
         type: repeater
         prompt: bombozama.linkcheck::lang.strings.modelators_prompt
+        label: bombozama.linkcheck::lang.strings.modelator
+        commentAbove: bombozama.linkcheck::lang.strings.modelator_comment
         form:
             fields:
                 modelator:
-                    label: bombozama.linkcheck::lang.strings.modelator
-                    commentAbove: bombozama.linkcheck::lang.strings.modelator_comment
-                    type: dropdown
                     emptyOption: bombozama.linkcheck::lang.strings.modelator_empty
+                    span: full
+                    type: dropdown
