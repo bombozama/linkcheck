@@ -21,7 +21,7 @@ class Settings extends Model
     # Render options for dropdowns on settings/fields.yaml
     public function getModelatorOptions($keyValue = null)
     {
-        $models = $out = []; $i=0;
+        $models = $out = [];
         $authors = File::directories(plugins_path());
         foreach($authors as $author)
             foreach(File::directories($author) as $plugin)
