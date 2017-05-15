@@ -27,6 +27,7 @@ class BrokenLinks extends Controller
 
     public function onRefreshLinkList()
     {
+        Flash::warning(Lang::get('bombozama.linkcheck::lang.strings.working'));
         $brokenLinks = BrokenLink::processLinks();
         Flash::success(Lang::get('bombozama.linkcheck::lang.strings.total_links', ['number' => $brokenLinks]));
 

@@ -4,6 +4,7 @@ use Bombozama\LinkCheck\Models\BrokenLink;
 use System\Classes\PluginBase;
 use Bombozama\LinkCheck\Models\Settings;
 use Backend;
+use Lang;
 
 /**
  * LinkCheck Plugin Information File
@@ -62,6 +63,18 @@ class Plugin extends PluginBase
                 'permissions' => ['bombozama.linkcheck.view']
             ],
         ];
+    }
+
+    public function registerListColumnTypes()
+    {
+        return [
+            'httpstatus' => [$this, 'httpStatus'],
+        ];
+    }
+
+    public function httpStatus($value, $column, $record)
+    {
+        return '<span title="' . Lang::get('bombozama.linkcheck::lang.codes.' . $value ) . '">' . $value . '</span>';
     }
 
     // Please do https://octobercms.com/docs/setup/installation#crontab-setup
