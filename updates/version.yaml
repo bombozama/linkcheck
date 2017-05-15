@@ -1,6 +1,10 @@
-1.0.1: First version of LinkCheck
+1.0.1: 'First version of LinkCheck'
 1.0.2:
-- Run database operations
-- create_broken_links_table.php
-1.0.3: Implemented i18n
-1.0.4: Quick fix for unsupported Pivot models
+    - 'Run database operations'
+    - create_broken_links_table.php
+1.0.3: 'Implemented i18n'
+1.0.4:
+    - 'Quick fix for unsupported Pivot models'
+1.0.5:
+    - 'Updated table bombozama_linkcheck_broken_links'
+    - update_broken_links_table.php

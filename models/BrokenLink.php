@@ -64,7 +64,8 @@ class BrokenLink extends Model
                             'model'     => array_pop($modelParts),
                             'model_id'  => $model->id,
                             'field'     => $field,
-                            'url'       => $model->$field
+                            'context'   => $model->$field,
+                            'url'       => $url
                         ];
                 }
             }

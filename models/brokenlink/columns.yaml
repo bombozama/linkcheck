@@ -7,9 +7,11 @@ columns:
         label: bombozama.linkcheck::lang.strings.status
         searchable: true
         width: 100px
+        type: httpstatus
     url:
         label: bombozama.linkcheck::lang.strings.url
         searchable: true
+        select: IF( CHAR_LENGTH(url) > 99, CONCAT( LEFT(url, 99), '...' ), url )
     plugin:
         label: bombozama.linkcheck::lang.strings.plugin
         searchable: true
@@ -21,11 +23,15 @@ columns:
         searchable: true
         select: IF(model_id IS NULL, '--', model_id)
         width: 110px
+    context:
+        invisible: true
+        searchable: false
     field:
         label: bombozama.linkcheck::lang.strings.field
         searchable: true
         width: 110px
     created_at:
         label: bombozama.linkcheck::lang.strings.created_at
+        type: timetense
         searchable: false
         width: 145px
