@@ -24,15 +24,21 @@ class Settings extends Model
         $models = $out = [];
         $authors = File::directories(plugins_path());
         foreach($authors as $author)
-            foreach(File::directories($author) as $plugin)
-                foreach(File::files($plugin . DIRECTORY_SEPARATOR . 'models') as $modelFile) {
-                    # All links in the LinkCheck plugin table are broken. Skip.
-                    $linkCheckPluginPath = plugins_path() . DIRECTORY_SEPARATOR . 'bombozama' . DIRECTORY_SEPARATOR . 'linkcheck';
-                    if($plugin == $linkCheckPluginPath)
-                        continue;
+            foreach(File::directories($author) as $plugin) {
+        	    $modelPath = $plugin . DIRECTORY_SEPARATOR . 'models';
+        	    if (! File::exists($modelPath))
+        	    	continue;
 
-                    $models[] = Helper::getFullClassNameFromFile((string)$modelFile);
-                }
+	            foreach ( File::files( $modelPath ) as $modelFile ) {
+		            # All links in the LinkCheck plugin table are broken. Skip.
+		            $linkCheckPluginPath = plugins_path() . DIRECTORY_SEPARATOR . 'bombozama' . DIRECTORY_SEPARATOR . 'linkcheck';
+		            if ( $plugin == $linkCheckPluginPath ) {
+			            continue;
+		            }
+
+		            $models[] = Helper::getFullClassNameFromFile( (string) $modelFile );
+	            }
+            }
         foreach($models as $model) {
             if(substr($model, -5) == 'Pivot')
                 continue;
